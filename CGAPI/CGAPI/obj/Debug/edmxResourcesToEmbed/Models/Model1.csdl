@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Restaurant_requests">
+    <Key>
+      <PropertyRef Name="restaurant_request_id" />
+    </Key>
+    <Property Name="restaurant_request_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int64" Nullable="false" />
+    <Property Name="restaurant_id" Type="Int64" Nullable="false" />
+    <Property Name="approved" Type="Boolean" />
+    <NavigationProperty Name="Restaurants" Relationship="Self.FK__Restauran__resta__628FA481" FromRole="Restaurant_requests" ToRole="Restaurants" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Restauran__user___619B8048" FromRole="Restaurant_requests" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Restaurant_tags">
+    <Key>
+      <PropertyRef Name="restaurant_tag_id" />
+    </Key>
+    <Property Name="restaurant_tag_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tag_id" Type="Int64" Nullable="false" />
+    <Property Name="restaurant_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Restaurants" Relationship="Self.FK__Restauran__resta__5812160E" FromRole="Restaurant_tags" ToRole="Restaurants" />
+    <NavigationProperty Name="Tags" Relationship="Self.FK__Restauran__tag_i__59063A47" FromRole="Restaurant_tags" ToRole="Tags" />
+  </EntityType>
+  <EntityType Name="Restaurants">
+    <Key>
+      <PropertyRef Name="restaurant_id" />
+    </Key>
+    <Property Name="restaurant_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="restaurant_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="website" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="url_image" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="location_map" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="is_visible" Type="Boolean" />
+    <NavigationProperty Name="Restaurant_requests" Relationship="Self.FK__Restauran__resta__628FA481" FromRole="Restaurants" ToRole="Restaurant_requests" />
+    <NavigationProperty Name="Restaurant_tags" Relationship="Self.FK__Restauran__resta__5812160E" FromRole="Restaurants" ToRole="Restaurant_tags" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__restaur__534D60F1" FromRole="Restaurants" ToRole="Reviews" />
+  </EntityType>
+  <EntityType Name="Review_requests">
+    <Key>
+      <PropertyRef Name="review_request_id" />
+    </Key>
+    <Property Name="review_request_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int64" Nullable="false" />
+    <Property Name="review_id" Type="Int64" Nullable="false" />
+    <Property Name="approved" Type="Boolean" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK__Review_re__revie__5DCAEF64" FromRole="Review_requests" ToRole="Reviews" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Review_re__user___5CD6CB2B" FromRole="Review_requests" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Reviews">
+    <Key>
+      <PropertyRef Name="review_id" />
+    </Key>
+    <Property Name="review_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rating" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+    <Property Name="review_content" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="review_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="is_visible" Type="Boolean" />
+    <Property Name="user_id" Type="Int64" Nullable="false" />
+    <Property Name="restaurant_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Restaurants" Relationship="Self.FK__Reviews__restaur__534D60F1" FromRole="Reviews" ToRole="Restaurants" />
+    <NavigationProperty Name="Review_requests" Relationship="Self.FK__Review_re__revie__5DCAEF64" FromRole="Reviews" ToRole="Review_requests" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Reviews__user_id__52593CB8" FromRole="Reviews" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="rol_id" />
+    </Key>
+    <Property Name="rol_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rol_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Users__rol_id__4BAC3F29" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="tag_id" />
+    </Key>
+    <Property Name="tag_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tag_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Restaurant_tags" Relationship="Self.FK__Restauran__tag_i__59063A47" FromRole="Tags" ToRole="Restaurant_tags" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="url_image" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rol_id" Type="Int64" Nullable="false" />
+    <Property Name="register_date" Type="DateTime" Precision="3" />
+    <Property Name="use_recovery_password" Type="Boolean" />
+    <Property Name="date_recovery" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Restaurant_requests" Relationship="Self.FK__Restauran__user___619B8048" FromRole="Users" ToRole="Restaurant_requests" />
+    <NavigationProperty Name="Review_requests" Relationship="Self.FK__Review_re__user___5CD6CB2B" FromRole="Users" ToRole="Review_requests" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__user_id__52593CB8" FromRole="Users" ToRole="Reviews" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK__Users__rol_id__4BAC3F29" FromRole="Users" ToRole="Roles" />
+    <NavigationProperty Name="Bitacora" Relationship="Self.FK__Bitacora__user_i__6477ECF3" FromRole="Users" ToRole="Bitacora" />
+  </EntityType>
+  <EntityType Name="Bitacora">
+    <Key>
+      <PropertyRef Name="bitacora_id" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="origin" />
+      <PropertyRef Name="message" />
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="bitacora_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="origin" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="message" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Bitacora__user_i__6477ECF3" FromRole="Bitacora" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK__Restauran__resta__628FA481">
+    <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
+    <End Role="Restaurant_requests" Type="Self.Restaurant_requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurants">
+        <PropertyRef Name="restaurant_id" />
+      </Principal>
+      <Dependent Role="Restaurant_requests">
+        <PropertyRef Name="restaurant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Restauran__user___619B8048">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Restaurant_requests" Type="Self.Restaurant_requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Restaurant_requests">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Restauran__resta__5812160E">
+    <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
+    <End Role="Restaurant_tags" Type="Self.Restaurant_tags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurants">
+        <PropertyRef Name="restaurant_id" />
+      </Principal>
+      <Dependent Role="Restaurant_tags">
+        <PropertyRef Name="restaurant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Restauran__tag_i__59063A47">
+    <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+    <End Role="Restaurant_tags" Type="Self.Restaurant_tags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="tag_id" />
+      </Principal>
+      <Dependent Role="Restaurant_tags">
+        <PropertyRef Name="tag_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reviews__restaur__534D60F1">
+    <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
+    <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurants">
+        <PropertyRef Name="restaurant_id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="restaurant_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Review_re__revie__5DCAEF64">
+    <End Role="Reviews" Type="Self.Reviews" Multiplicity="1" />
+    <End Role="Review_requests" Type="Self.Review_requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reviews">
+        <PropertyRef Name="review_id" />
+      </Principal>
+      <Dependent Role="Review_requests">
+        <PropertyRef Name="review_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Review_re__user___5CD6CB2B">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Review_requests" Type="Self.Review_requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Review_requests">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reviews__user_id__52593CB8">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Reviews">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__rol_id__4BAC3F29">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="rol_id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bitacora__user_i__6477ECF3">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Bitacora" Type="Self.Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Bitacora">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Restaurant_requests" EntityType="Self.Restaurant_requests" />
+    <EntitySet Name="Restaurant_tags" EntityType="Self.Restaurant_tags" />
+    <EntitySet Name="Restaurants" EntityType="Self.Restaurants" />
+    <EntitySet Name="Review_requests" EntityType="Self.Review_requests" />
+    <EntitySet Name="Reviews" EntityType="Self.Reviews" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="Tags" EntityType="Self.Tags" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="Bitacora" EntityType="Self.Bitacora" />
+    <AssociationSet Name="FK__Restauran__resta__628FA481" Association="Self.FK__Restauran__resta__628FA481">
+      <End Role="Restaurants" EntitySet="Restaurants" />
+      <End Role="Restaurant_requests" EntitySet="Restaurant_requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Restauran__user___619B8048" Association="Self.FK__Restauran__user___619B8048">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Restaurant_requests" EntitySet="Restaurant_requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Restauran__resta__5812160E" Association="Self.FK__Restauran__resta__5812160E">
+      <End Role="Restaurants" EntitySet="Restaurants" />
+      <End Role="Restaurant_tags" EntitySet="Restaurant_tags" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Restauran__tag_i__59063A47" Association="Self.FK__Restauran__tag_i__59063A47">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="Restaurant_tags" EntitySet="Restaurant_tags" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reviews__restaur__534D60F1" Association="Self.FK__Reviews__restaur__534D60F1">
+      <End Role="Restaurants" EntitySet="Restaurants" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Review_re__revie__5DCAEF64" Association="Self.FK__Review_re__revie__5DCAEF64">
+      <End Role="Reviews" EntitySet="Reviews" />
+      <End Role="Review_requests" EntitySet="Review_requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Review_re__user___5CD6CB2B" Association="Self.FK__Review_re__user___5CD6CB2B">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Review_requests" EntitySet="Review_requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reviews__user_id__52593CB8" Association="Self.FK__Reviews__user_id__52593CB8">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Reviews" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__rol_id__4BAC3F29" Association="Self.FK__Users__rol_id__4BAC3F29">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bitacora__user_i__6477ECF3" Association="Self.FK__Bitacora__user_i__6477ECF3">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Bitacora" EntitySet="Bitacora" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

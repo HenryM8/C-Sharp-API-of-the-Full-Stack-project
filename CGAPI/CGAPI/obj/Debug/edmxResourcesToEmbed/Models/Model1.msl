@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbModelStoreContainer" CdmEntityContainer="dbEntities">
+    <EntitySetMapping Name="Restaurant_requests">
+      <EntityTypeMapping TypeName="dbModel.Restaurant_requests">
+        <MappingFragment StoreEntitySet="Restaurant_requests">
+          <ScalarProperty Name="restaurant_request_id" ColumnName="restaurant_request_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="restaurant_id" ColumnName="restaurant_id" />
+          <ScalarProperty Name="approved" ColumnName="approved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaurant_tags">
+      <EntityTypeMapping TypeName="dbModel.Restaurant_tags">
+        <MappingFragment StoreEntitySet="Restaurant_tags">
+          <ScalarProperty Name="restaurant_tag_id" ColumnName="restaurant_tag_id" />
+          <ScalarProperty Name="tag_id" ColumnName="tag_id" />
+          <ScalarProperty Name="restaurant_id" ColumnName="restaurant_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaurants">
+      <EntityTypeMapping TypeName="dbModel.Restaurants">
+        <MappingFragment StoreEntitySet="Restaurants">
+          <ScalarProperty Name="restaurant_id" ColumnName="restaurant_id" />
+          <ScalarProperty Name="restaurant_name" ColumnName="restaurant_name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="url_image" ColumnName="url_image" />
+          <ScalarProperty Name="location_map" ColumnName="location_map" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Review_requests">
+      <EntityTypeMapping TypeName="dbModel.Review_requests">
+        <MappingFragment StoreEntitySet="Review_requests">
+          <ScalarProperty Name="review_request_id" ColumnName="review_request_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="review_id" ColumnName="review_id" />
+          <ScalarProperty Name="approved" ColumnName="approved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="dbModel.Reviews">
+        <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="review_id" ColumnName="review_id" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="review_content" ColumnName="review_content" />
+          <ScalarProperty Name="review_date" ColumnName="review_date" />
+          <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="restaurant_id" ColumnName="restaurant_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="dbModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="rol_name" ColumnName="rol_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="dbModel.Tags">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="tag_id" ColumnName="tag_id" />
+          <ScalarProperty Name="tag_name" ColumnName="tag_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="dbModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="url_image" ColumnName="url_image" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="register_date" ColumnName="register_date" />
+          <ScalarProperty Name="use_recovery_password" ColumnName="use_recovery_password" />
+          <ScalarProperty Name="date_recovery" ColumnName="date_recovery" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bitacora">
+      <EntityTypeMapping TypeName="dbModel.Bitacora">
+        <MappingFragment StoreEntitySet="Bitacora">
+          <ScalarProperty Name="bitacora_id" ColumnName="bitacora_id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="origin" ColumnName="origin" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

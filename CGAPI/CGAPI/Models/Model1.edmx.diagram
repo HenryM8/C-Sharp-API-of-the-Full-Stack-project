@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="faca6845ef874742aa0d671ce01e6983" Name="Diagram1">
+        <EntityTypeShape EntityType="dbModel.Restaurant_requests" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Restaurant_tags" Width="1.5" PointX="8.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Restaurants" Width="1.5" PointX="6" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Review_requests" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Reviews" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Roles" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Tags" Width="1.5" PointX="6" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Users" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.Bitacora" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
+        <AssociationConnector Association="dbModel.FK__Restauran__resta__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Restauran__user___619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Restauran__resta__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Restauran__tag_i__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Reviews__restaur__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Review_re__revie__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Review_re__user___5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Reviews__user_id__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Users__rol_id__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModel.FK__Bitacora__user_i__6477ECF3" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
